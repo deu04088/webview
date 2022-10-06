@@ -16,7 +16,6 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-
     WebView wView;
     ProgressBar bar;
     EditText edit;
@@ -32,11 +31,12 @@ public class MainActivity extends AppCompatActivity {
 
         initWebView();
 
-        edit.findViewById(R.id.edit);
+        edit = findViewById(R.id.edit);
         edit.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+
             @Override
-            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-                if(i == EditorInfo.IME_ACTION_DONE) {
+            public boolean onEditorAction(TextView textView, int action, KeyEvent keyEvent) {
+                if(action == EditorInfo.IME_ACTION_DONE) {
                     wView.loadUrl("https://"+edit.getText().toString()+"");
                 }
                 return false;
